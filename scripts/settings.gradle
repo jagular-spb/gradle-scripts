@@ -1,0 +1,5 @@
+rootProject.name = 'ds-infra-dummy-dag'
+include(
+    'config',
+    'pipeline'
+)
