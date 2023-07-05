@@ -7,6 +7,7 @@ subprojects {
 
   version = "${project.shortVersion}-${version_suffix()}"
   group = project.hasProperty('group') ? project.group : 'test'
+  repo =  "REPONAME"
 
 distributions {
     main {
@@ -20,7 +21,7 @@ distributions {
       contents {
         from(".") {
           into "/"
-          exclude 'build/', '.gradle/', '.git*', '.idea', '*.gradle', 'gradle.properties', '*.template', 'params-setup.sh', 'params-setup-lib.sh'
+          exclude 'build/', '.gradle/', '.git*', '.idea', '*.gradle', 'gradle.properties', '*.template'
           includeEmptyDirs = project.hasProperty('includeEmptyDirs') ? project.includeEmptyDirs : false
 
         }
@@ -53,7 +54,7 @@ distributions {
           username nexusUsername
           password nexusPassword
         }
-        url "${nexusUrl}/content/repositories/ds-${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}"
+        url "${nexusUrl}/content/repositories/${repo}-${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}"
       }
     }
     
